@@ -9,9 +9,9 @@ from tqdm import tqdm
 epochs = 1  
 
 # DNN definieren
-class SimpleCNN(nn.Module):
+class CNN(nn.Module):
     def __init__(self):
-        super(SimpleCNN, self).__init__()
+        super(CNN, self).__init__()
         self.conv1 = nn.Conv2d(1, 10, kernel_size=5)
         self.pool = nn.MaxPool2d(2)
         self.fc1 = nn.Linear(10 * 12 * 12, 10)
@@ -31,7 +31,7 @@ train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=64, shuffle
 test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=1000, shuffle=False)
 
 # Model Loss und Optimizer Instanz erstellen
-model = SimpleCNN()
+model = CNN()
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.001)
 
